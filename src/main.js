@@ -5,13 +5,13 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 /**Load Project-List for homepage */
-async function loadOptions() {
+async function loadStoryList() {
   try {
       // Invoke the Rust command to get options
-      const options = await window.__TAURI__.invoke("get_project_list");
+      const options = await window.__TAURI__.invoke("get_story_list");
       
       // Get the select element
-      const select = document.getElementById("project-list");
+      const select = document.getElementById("story-list");
 
       // Clear existing options
       select.innerHTML = '';
@@ -26,4 +26,27 @@ async function loadOptions() {
   } catch (error) {
       console.error("Failed to load options:", error);
   }
+}
+
+// Function to navigate to a page
+import { listen } from '@tauri-apps/api/event';
+
+// Listen for the "navigate" event
+listen('navigate', (event) => {
+    const pageName = event.payload;  // Get the page name from the event payload
+    console.log(`Navigating to ${pageName}`);
+
+    // Navigate to the new page
+    window.location.href = `${pageName}.html`;
+});
+
+// Function to call from Rust to navigate to a new page
+function navigateToPage(pageName) {
+    invoke('navigate_to_page', { pageName })
+        .then(() => {
+            console.log(`Request sent to navigate to ${pageName}`);
+        })
+        .catch((err) => {
+            console.error('Error navigating:', err);
+        });
 }
