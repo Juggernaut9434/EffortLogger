@@ -10,30 +10,32 @@
 
   <body>
     <main class="container">
-      <h1>Welcome to Tauri</h1>
-
-      <div class="row">
-        <a href="https://tauri.app" target="_blank">
-          <img src="/assets/tauri.svg" class="logo tauri" alt="Tauri logo" />
-        </a>
-        <a
-          href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-          target="_blank"
-        >
-          <img
-            src="/assets/javascript.svg"
-            class="logo vanilla"
-            alt="JavaScript logo"
-          />
-        </a>
+    <!-- Sidebar with labels and drop-downs -->
+    <div class="sidebar">
+      <div class="dropdown-container">
+        <label for="dropdown2">Select the Project Story ID:</label>
+        <select id="dropdown2">
+          <option value="project1">Project 1</option>
+          <option value="project2">Project 2</option>
+          <option value="project3">Project 3</option>
+        </select>
       </div>
-      <p>Click on the Tauri logo to learn more about the framework</p>
 
-      <form class="row" id="greet-form">
-        <input id="greet-input" placeholder="Enter a name..." />
-        <button type="submit">Greet</button>
-      </form>
-      <p id="greet-msg"></p>
+      <!-- Action Buttons -->
+      <label for="start-button">When you start a new activity, press this button</label>
+      <button id="start-button">Start Activity</button>
+      <label for="end-button">When you end an activity, press this button</label>
+      <button id="end-button">End Activity</button>
+    </div>
+
+    <!-- Button bar at the bottom -->
+    <div class="button-bar">
+      <button>Add a Story</button>
+      <button>Add Note</button>
+      <button>Update State</button>
+      <button>View Logs</button>
+      <button>View Definitions</button>
+    </div>
     </main>
   </body>
 </html>
