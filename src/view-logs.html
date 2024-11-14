@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Story Tracking</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+    <main class="container" style="flex-direction: column;">
+        <h1>Story Tracking Information</h1>
+        <table class="info-table">
+            <thead>
+                <tr>
+                    <th>Story-ID</th>
+                    <th>Start DateTime</th>
+                    <th>End DateTime</th>
+                    <th>Duration</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>STORY-001</td>
+                    <td>2024-11-14 09:00:00</td>
+                    <td>2024-11-14 11:30:00</td>
+                    <td>2 hours 30 minutes</td>
+                </tr>
+                <tr>
+                    <td>STORY-002</td>
+                    <td>2024-11-14 10:00:00</td>
+                    <td>2024-11-14 12:00:00</td>
+                    <td>2 hours</td>
+                </tr>
+                <tr>
+                    <td>STORY-003</td>
+                    <td>2024-11-14 13:00:00</td>
+                    <td>2024-11-14 15:00:00</td>
+                    <td>2 hours</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Back Button -->
+        <div class="back-button-container">
+            <button id="back-button" onclick="window.history.back()">Back</button>
+        </div>
+    </main>
+
+</body>
+</html>

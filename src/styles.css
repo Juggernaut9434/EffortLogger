@@ -3,16 +3,22 @@
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
-
   color: #0f0f0f;
   background-color: #f6f6f6;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* Set up the fixed size for the container */
 .container {
   width: 800px;
@@ -20,19 +26,18 @@
   border: 2px solid #333;
   margin: auto;
   display: flex;
-  flex-direction: column;
-  position: relative;
+  flex-direction: row; /* Set flex-direction to row for side-by-side layout */
   box-sizing: border-box;
+  justify-content: space-between;
+  padding: 10px;
 }
 
 /* Style for the left sidebar for labels and drop-downs */
 .sidebar {
-  position: absolute;
-  left: 10px;
-  top: 10px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
+  width: 70%;
 }
 
 .sidebar div {
@@ -40,17 +45,17 @@
 }
 
 .sidebar button {
-  width: 200px;         /* Increase width */
-  height: 60px;         /* Increase height */
-  padding: 15px 20px;   /* Add padding for more clickable area */
-  font-size: 18px;      /* Increase font size */
-  font-weight: bold;    /* Make text bold for visibility */
-  border-radius: 8px;   /* Rounded corners */
-  background-color: #4CAF50; /* Green background */
-  color: white;         /* White text */
-  border: none;         /* Remove border */
-  cursor: pointer;      /* Pointer cursor on hover */
-  transition: background-color 0.3s; /* Smooth color transition */
+  width: 200px;
+  height: 60px;
+  padding: 15px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
   margin-bottom: 2em;
 }
 
@@ -68,21 +73,18 @@
   font-size: 3em;
 }
 
-label, select {
-  margin-bottom: 5px;
-}
-
-/* Style for the buttons along the bottom */
+/* Style for the buttons along the right side */
 .button-bar {
-  position: absolute;
-  bottom: 10px;
-  width: 100%;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  gap: 10px;
+  width: 25%; /* Adjust width to fit alongside sidebar */
 }
 
 .button-bar button {
-  width: 140px;
+  width: 200px;;
   height: 50px;
   font-size: 1.1em;
   background-color: #007BFF;
@@ -90,8 +92,95 @@ label, select {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-bottom: 20px;
 }
 
 .button-bar button:hover {
   background-color: #0056b3;
+}
+
+/* Story Details Column */
+.story-details {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Input Groups for Story Details */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input-group label {
+  font-size: 1.2em;
+}
+
+.input-group input,
+.input-group textarea {
+  padding: 10px;
+  font-size: 1.1em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.input-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/** Table Styling **/
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  overflow-y: auto;
+}
+
+.info-table th,
+.info-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.info-table th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.info-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.info-table tr:hover {
+  background-color: #ddd;
+}
+
+.info-table td {
+  text-align: center;
+}
+
+/* Styling for the Back button container */
+.back-button-container {
+  margin-top: 20px;
+}
+
+#back-button {
+  width: 150px;
+  height: 40px;
+  font-size: 1.1em;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 auto;
+  display: block; /* Centers the button */
+}
+
+#back-button:hover {
+  background-color: #d32f2f;
 }

@@ -10,32 +10,30 @@
 
   <body>
     <main class="container">
-    <!-- Sidebar with labels and drop-downs -->
-    <div class="sidebar">
-      <div class="dropdown-container">
-        <label for="dropdown2">Select the Project Story ID:</label>
-        <select id="dropdown2">
-          <option value="project1">Project 1</option>
-          <option value="project2">Project 2</option>
-          <option value="project3">Project 3</option>
-        </select>
+      <!-- Sidebar with labels and drop-downs -->
+      <div class="sidebar">
+        <div class="dropdown-container">
+          <label for="story-list">Select the Project Story ID:</label>
+          <select id="story-list">
+            <option>Loading...</option>
+          </select>
+        </div>
+
+        <!-- Action Buttons -->
+        <label for="start-button">When you start a new activity, press this button</label>
+        <button id="start-button">Start Activity</button>
+        <label for="end-button">When you end an activity, press this button</label>
+        <button id="end-button">End Activity</button>
       </div>
 
-      <!-- Action Buttons -->
-      <label for="start-button">When you start a new activity, press this button</label>
-      <button id="start-button">Start Activity</button>
-      <label for="end-button">When you end an activity, press this button</label>
-      <button id="end-button">End Activity</button>
-    </div>
-
-    <!-- Button bar at the bottom -->
-    <div class="button-bar">
-      <button>Add a Story</button>
-      <button>Add Note</button>
-      <button>Update State</button>
-      <button>View Logs</button>
-      <button>View Definitions</button>
-    </div>
+      <!-- Button bar on the right side -->
+      <div class="button-bar">
+        <button>Add a Story</button>
+        <button>Add Note</button>
+        <button>Update State</button>
+        <button>View Logs</button>
+        <button>View Definitions</button>
+      </div>
     </main>
   </body>
 </html>

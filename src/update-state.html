@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add New Story</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="/main.js" defer></script>
+</head>
+<body>
+
+    <main class="container">
+        <!-- Left Column for Story Details -->
+        <div class="story-details">
+            <!-- Story ID, Story Points -->
+            <div class="input-group">
+                <label for="story-id">Story ID:</label>
+                <input disabled type="text" id="story-id" placeholder="Enter story ID" />
+                <label for="story-points">Story Points:</label>
+                <input type="number" id="story-points" placeholder="Enter story points" />
+                <label for="story-title">Story Title:</label>
+                <input type="text" id="story-title" placeholder="Enter story title" />
+            </div>
+
+            <!-- Story Description -->
+            <div class="input-group">
+                <label for="story-description">Story Description:</label>
+                <textarea id="story-description" placeholder="Enter story description"></textarea>
+            </div>
+        </div>
+
+        <!-- Right Column for Buttons -->
+        <div class="button-bar">
+            <button id="submit-button">Submit</button>
+            <button id="cancel-button">Cancel</button>
+        </div>
+    </main>
+
+</body>
+</html>
