@@ -166,6 +166,7 @@
 /* Styling for the Back button container */
 .back-button-container {
   margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 #back-button {
