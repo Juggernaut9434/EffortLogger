@@ -9,11 +9,13 @@ window.addEventListener("DOMContentLoaded", () => {
         add_btn.addEventListener("click", () => {
             navigateToPage("add-story");
         });
-    }
-    else if (document.title === "Add New Story") {
-        const back_btn = document.getElementById("cancel-button");
-        back_btn.addEventListener("click", () => {
-            navigateToPage("index");
+        const view_btn = document.getElementById("view-logs");
+        view_btn.addEventListener("click", () => {
+            navigateToPage("view-logs");
+        });
+        const update_state_btn = document.getElementById("update-state");
+        update_state_btn.addEventListener("click", () => {
+            navigateToPage("update-state");
         });
     }
 });
