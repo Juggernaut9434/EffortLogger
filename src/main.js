@@ -1,14 +1,28 @@
 const { invoke } = window.__TAURI__.core;
+const { listen } = window.__TAURI__.event;
 
 window.addEventListener("DOMContentLoaded", () => {
-  loadOptions();
+    if (document.title === "Home") {
+        loadStoryList();
+        
+        const add_btn = document.getElementById("add-story");
+        add_btn.addEventListener("click", () => {
+            navigateToPage("add-story");
+        });
+    }
+    else if (document.title === "Add New Story") {
+        const back_btn = document.getElementById("cancel-button");
+        back_btn.addEventListener("click", () => {
+            navigateToPage("index");
+        });
+    }
 });
 
 /**Load Project-List for homepage */
 async function loadStoryList() {
   try {
       // Invoke the Rust command to get options
-      const options = await window.__TAURI__.invoke("get_story_list");
+      const options = await invoke("get_story_list");
       
       // Get the select element
       const select = document.getElementById("story-list");
@@ -29,8 +43,6 @@ async function loadStoryList() {
 }
 
 // Function to navigate to a page
-import { listen } from '@tauri-apps/api/event';
-
 // Listen for the "navigate" event
 listen('navigate', (event) => {
     const pageName = event.payload;  // Get the page name from the event payload

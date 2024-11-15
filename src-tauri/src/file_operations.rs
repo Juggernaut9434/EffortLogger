@@ -2,13 +2,13 @@ use std::fs::{File, create_dir_all, metadata};
 use std::io::Write;
 use dirs;
 
-pub fn create_story_list() -> Result<(), String> {
+pub fn create_story_files() -> Result<(), String> {
     // Get the home directory path using dirs::home_dir
     let home_dir = dirs::home_dir().ok_or("Failed to find home directory")?;
     
     // Define the folder and file path
     let effort_logger_dir = home_dir.join("effort-logger");
-    let story_file_path = effort_logger_dir.join("story-list.txt");
+    let story_file_path = effort_logger_dir.join("story-logs.txt");
 
     // Create the "effort-logger" folder if it doesn't exist
     if !effort_logger_dir.exists() {
@@ -27,6 +27,23 @@ pub fn create_story_list() -> Result<(), String> {
     
         // Optionally, write initial data to the file
         file.write_all(b"Story ID, Start DateTime, End DateTime, Duration\n")
+            .map_err(|e| format!("Failed to write to file: {}", e))?;
+    }
+
+    let story_list_path = effort_logger_dir.join("story-list.txt");
+
+    // Check if the story-list.txt file already exists
+    if metadata(&story_list_path).is_ok() {
+        // If the file exists, do nothing and return
+        return Ok(());
+    }
+    // If the file doesn't exist, create it. 
+    else {
+        // Create the story-list.txt file
+        let mut file = File::create(story_list_path).map_err(|e| format!("Failed to create file: {}", e))?;
+    
+        // Optionally, write initial data to the file
+        file.write_all(b"Story ID\n")
             .map_err(|e| format!("Failed to write to file: {}", e))?;
     }
 
