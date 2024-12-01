@@ -1,15 +1,25 @@
 // story.rs
 
-use std::fs;
+use crate::file_operations::append_to_file;
+use std::{fs, io, path::PathBuf};
 
-pub fn read_story_list_from_file() -> Result<Vec<String>, String> {
+fn get_story_list_path() -> Result<PathBuf, String> {
     // Resolve the path to ~/effort-logger/story-list.txt
-    let mut path = match dirs::home_dir() {
+    let mut path: PathBuf = match dirs::home_dir() {
         Some(home) => home,
         None => return Err("Failed to determine home directory".to_string()),
     };
     path.push("effort-logger/story-list.txt");
 
+    Ok(path)
+}
+
+pub fn read_story_list_from_file() -> Result<Vec<String>, String> {
+    // Get the path to the story list file
+    let path = match get_story_list_path() {
+        Ok(path) => path,
+        Err(e) => return Err(e), // Return the error if path resolution fails
+    };
     // Read the file at the resolved path
     match fs::read_to_string(&path) {
         Ok(content) => {
@@ -19,4 +29,13 @@ pub fn read_story_list_from_file() -> Result<Vec<String>, String> {
         }
         Err(e) => Err(format!("Failed to read file at {:?}: {}", path, e)),
     }
+}
+
+pub fn add_story_to_list(story_id: String) -> Result<(), std::io::Error> {
+    // Get the path to the story list file
+    let path = match get_story_list_path() {
+        Ok(path) => path,
+        Err(e) => return Err(io::Error::new(io::ErrorKind::NotFound, e)), // Return error if path resolution fails
+    };
+    append_to_file(path, story_id)
 }
