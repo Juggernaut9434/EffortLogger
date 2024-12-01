@@ -12,15 +12,27 @@ pub fn run_cli() {
                 .about("Start the clock on a story-id")
                 .arg(arg!([ID])),
         )
+        .subcommand(
+            Command::new("stop")
+                .about("Stop the clock on a story-id")
+                .arg(arg!([ID])),
+        )
         .get_matches();
 
     // Check if the "start" subcommand was used
-    if let Some(sub_matches) = matches.subcommand_matches("start") {
-        if let Some(story_id) = sub_matches.get_one::<String>("ID") {
-            // Handle the "start" subcommand with the provided story-id
-            println!("Starting story with ID: {}", story_id);
+    match matches.subcommand() {
+        Some(("start", sub_matches)) => {
+            if let Some(story_id) = sub_matches.get_one::<String>("ID") {
+                // Handle the "start" subcommand with the provided story-id
+                println!("Starting story with ID: {}", story_id);
+            }
         }
-    } else {
-        println!("No subcommand provided. Use 'start <story-id>' to begin a story.");
+        Some(("stop", sub_matches)) => {
+            if let Some(story_id) = sub_matches.get_one::<String>("ID") {
+                // Handle the "start" subcommand with the provided story-id
+                println!("Stopping story with ID: {}", story_id);
+            }
+        }
+        _ => unreachable!("Exhausted list of subcommands and subcommand_required prevents `None`"),
     }
 }
